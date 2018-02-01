@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>EditMenu.qml</file>
+        <file>EditMenuForm.ui.qml</file>
+        <file>CurrentTasks.qml</file>
+        <file>CurrentTasksForm.ui.qml</file>
+        <file>img/left_arrow_dark.png</file>
+        <file>img/right_arrow_dark.png</file>
+        <file>img/calendar.png</file>
+        <file>img/Recycle Bin Empty3.png</file>
+        <file>img/organizer.png</file>
+        <file>img/organizer_2.png</file>
+        <file>img/remove-icon.png</file>
+        <file>img/background/1.png</file>
+        <file>img/background/2.jpg</file>
+        <file>img/background/720x1200_left.png</file>
+        <file>img/background/720x1200_right.png</file>
+        <file>img/background/773l.png</file>
+        <file>img/background/773r.png</file>
+    </qresource>
+</RCC>
