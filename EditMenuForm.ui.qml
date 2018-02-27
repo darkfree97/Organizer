@@ -20,7 +20,6 @@ Item {
 
     TextField{
         id: timeH
-        inputMethodHints: Qt.ImhDigitsOnly
         validator: RegExpValidator { regExp: /^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$ / }
         height:40
         placeholderText: "23:59"
@@ -32,8 +31,16 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         anchors.top: text1.bottom
         anchors.topMargin: 10
-        font.family: "Ubuntu Arial"
-        opacity: 0.7
+        style: TextFieldStyle{
+            background: Rectangle {
+                implicitWidth: 100
+                implicitHeight: 25
+                border.width: control.activeFocus ? 2 : 1
+                border.color: "#888"
+                radius: 10
+                opacity: 0.7
+            }
+        }
     }
 
     Button {
@@ -57,12 +64,12 @@ Item {
                 implicitHeight: 25
                 border.width: control.activeFocus ? 2 : 1
                 border.color: "#888"
-                radius: 4
+                radius: 10
                 opacity: 0.7
                 gradient: Gradient {
                     GradientStop { position: 0 ; color: control.pressed ? "white" : "white" }
-                    GradientStop { position: 0.9 ; color: control.pressed ? "white" : "white" }
-                    GradientStop { position: 1 ; color: control.pressed ? "lightBlue" : "lightBlue" }
+                    GradientStop { position: 0.5 ; color: control.pressed ? "white" : "white" }
+                    GradientStop { position: 1 ; color: control.pressed ? "#2EFEF7":"white"}
                 }
             }
         }
@@ -106,7 +113,16 @@ Item {
         anchors.topMargin: 15
         placeholderText: qsTr("")
         horizontalAlignment: Text.AlignHCenter
-        opacity: 0.7
+        style: TextFieldStyle{
+            background: Rectangle {
+                implicitWidth: 100
+                implicitHeight: 25
+                border.width: control.activeFocus ? 2 : 1
+                border.color: "#888"
+                radius: 10
+                opacity: 0.7
+            }
+        }
     }
     Rectangle {
         id: rectangle
@@ -151,6 +167,7 @@ Item {
             id: date_text
             x: 10
             y: 18
+            color: "#000000"
             text: qsTr("Дата ")
             horizontalAlignment: Text.AlignHCenter
             font.capitalization: Font.AllUppercase
@@ -166,15 +183,24 @@ Item {
     ListView {
         id: editTasksListView
         width: 110
+        snapMode: ListView.SnapToItem
+        cacheBuffer: 320
         spacing: 10
         anchors.right: parent.right
         anchors.rightMargin: 10
         anchors.left: parent.left
         anchors.leftMargin: 10
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 60
+        anchors.bottomMargin: 10
         anchors.top: saveBtn.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 15
+    }
+    Rectangle{
+        anchors.fill: editTasksListView
+        anchors.topMargin: -5
+        color: "white"
+        opacity: 0.5
+        radius: 10
     }
 
     Calendar{

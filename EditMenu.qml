@@ -1,4 +1,5 @@
 import QtQuick 2.4
+import QtQuick.Dialogs 1.2
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 
@@ -22,7 +23,12 @@ EditMenuForm {
     }
 
     editTasksListView.delegate: Item {
-        width: parent.width
+        anchors{
+            right: parent.right
+            left: parent.left
+            rightMargin: 5
+            leftMargin: 5
+        }
         height: 40
         Rectangle{
             anchors.fill: parent
@@ -84,7 +90,33 @@ EditMenuForm {
                 timeHM.text = ""
                 taskText.text = ""
             }
+        }
+        else{
+            dialog.visible = true
+        }
+    }
 
+    Dialog {
+        id: dialog
+        visible: false
+        title: "Повідомлення"
+        modality: Qt.WindowModal
+
+        standardButtons: StandardButton.Save | StandardButton.Cancel
+
+        onAccepted: console.log("Saving the date " +
+                calendar.selectedDate.toLocaleDateString())
+
+        contentItem: Rectangle{
+            color: "lightskyblue"
+            implicitWidth: 400
+            implicitHeight: 100
+            Text {
+                id: dialog_text
+                text: qsTr("Hello")
+                color:"navy"
+                anchors.centerIn: parent
+            }
         }
     }
 }
